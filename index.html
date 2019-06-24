@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    .xx {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background-color: #4CAF50;
+        border: none;
+        color: white;
+        padding: 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 1cm;
+        margin: 4px 2px;
+        border-radius: 50%;
+        cursor: pointer;
+    }
+    .zz {
+        background-color: white;
+        position: fixed;
+        height: 250px;
+        width: 250px;
+        border: solid black 1px;
+        vertical-align: middle;
+        left: calc(50% - 125px);
+        top: calc(50% - 125px);
+        display: none;
+    }
+</style>
+<body>
+<input oninput="search1(this.value)">
+
+    <div id="1" class="">
+    </div>
+<div class="xx" id = '17' onclick="add1 ()">+</div>
+<div class="zz" id = 'zz'>
+<input id="p" style="margin-top: 35%; margin-left: 13%" >
+    <button onclick="add2 ()" style="margin-left: calc(32% + 3px)" >Добавить</button>
+
+
+
+</div>
+
+</body>
+<script>
+    i = false;
+    a = ['cat', 'cow', 'dog'];
+    for (i=0; i<a.length;i++) {
+        x = document.createElement('div');
+        x.innerHTML='<div>'+a[i]+'</div>';
+        document.getElementById('1').appendChild(x);
+        console.log(a[i])
+    }
+    function search1(a1) {
+        document.getElementById('1').innerHTML = '';
+        for (i=0; i<a.length;i++){
+            if (a[i].includes(a1)){
+                x = document.createElement('div');
+                x.innerHTML='<div>'+a[i]+'</div>';
+                document.getElementById('1').appendChild(x);
+
+
+             }
+        }
+    }
+    function add1() {
+        i = !i;
+        if (i == true){
+            document.getElementById('zz').style.display = 'block';
+        }
+         else  {
+            document.getElementById('zz').style.display = 'none';
+        }
+
+    }
+    function add2() {
+       a.push(document.getElementById('p').value);
+        add1();
+        document.getElementById('1').innerHTML = '';
+        for (i=0; i<a.length;i++) {
+        x = document.createElement('div');
+        x.innerHTML='<div>'+a[i]+'</div>';
+        document.getElementById('1').appendChild(x);
+        console.log(a[i])
+    }
+    }
+// удаление через slice и позицию элемента
+//
+//
+//
+
+
+
+</script>
+</html>
