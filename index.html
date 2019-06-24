@@ -33,7 +33,41 @@
         top: calc(50% - 125px);
         display: none;
     }
+    .pp {
+        position: fixed;
+        bottom: 20px;
+        right: 100px;
+        background-color: red;
+        border: none;
+        color: white;
+        padding: 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 1cm;
+        margin: 4px 2px;
+        border-radius: 50%;
+        cursor: pointer;
+    }
+    .yy {
+        background-color: white;
+        position: fixed;
+        height: 250px;
+        width: 250px;
+        border: solid black 1px;
+        vertical-align: middle;
+        left: calc(50% - 125px);
+        top: calc(50% - 125px);
+        display: none;
+    }
 </style>
+
+
+
+
+
+
+
 <body>
 <input oninput="search1(this.value)">
 
@@ -41,14 +75,30 @@
     </div>
 <div class="xx" id = '17' onclick="add1 ()">+</div>
 <div class="zz" id = 'zz'>
+
+
 <input id="p" style="margin-top: 35%; margin-left: 13%" >
     <button onclick="add2 ()" style="margin-left: calc(32% + 3px)" >Добавить</button>
 
 
+</div>
+<div class="pp" style="margin-left: -20%" onclick="remove1 ()">&times</div>
+<div class="yy" id = 'yy'>
+    <input id="p1" style="margin-top: 35%; margin-left: 13%" >
+    <button onclick="remove2 ()" style="margin-left: calc(32% + 3px)" >Удалить</button>
 
 </div>
-
 </body>
+
+
+
+
+
+
+
+
+
+
 <script>
     i = false;
     a = ['cat', 'cow', 'dog'];
@@ -56,7 +106,7 @@
         x = document.createElement('div');
         x.innerHTML='<div>'+a[i]+'</div>';
         document.getElementById('1').appendChild(x);
-        console.log(a[i])
+
     }
     function search1(a1) {
         document.getElementById('1').innerHTML = '';
@@ -65,8 +115,6 @@
                 x = document.createElement('div');
                 x.innerHTML='<div>'+a[i]+'</div>';
                 document.getElementById('1').appendChild(x);
-
-
              }
         }
     }
@@ -77,8 +125,9 @@
         }
          else  {
             document.getElementById('zz').style.display = 'none';
-        }
+            document.getElementById('yy').style.display = 'none';
 
+        }
     }
     function add2() {
        a.push(document.getElementById('p').value);
@@ -88,15 +137,25 @@
         x = document.createElement('div');
         x.innerHTML='<div>'+a[i]+'</div>';
         document.getElementById('1').appendChild(x);
-        console.log(a[i])
+
     }
     }
+function remove1 () {
+     i = !i;
+        if (i == true){
+            document.getElementById('yy').style.display = 'block';
+        }
+         else  {
+            document.getElementById('yy').style.display = 'none';
+            document.getElementById('zz').style.display = 'none';
+
+        }
+}
+function remove2() {
+a.splice(4, 1);
+
+}
 // удаление через slice и позицию элемента
 //
 //
 //
-
-
-
-</script>
-</html>
