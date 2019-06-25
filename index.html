@@ -58,17 +58,11 @@
         vertical-align: middle;
         left: calc(50% - 125px);
         top: calc(50% - 125px);
+        z-index: 99999;
         display: none;
     }
 </style>
-
-
-
-
-
-
-
-<body>
+<body >
 <input oninput="search1(this.value)">
 
     <div id="1" class="">
@@ -76,37 +70,30 @@
 <div class="xx" id = '17' onclick="add1 ()">+</div>
 <div class="zz" id = 'zz'>
 
-
+<button onclick="ydalis1 ()" style="height: 25px; width: 25px; position: fixed; right: 304px">X</button>
 <input id="p" style="margin-top: 35%; margin-left: 13%" >
     <button onclick="add2 ()" style="margin-left: calc(32% + 3px)" >Добавить</button>
 
 
 </div>
 <div class="pp" style="margin-left: -20%" onclick="remove1 ()">&times</div>
-<div class="yy" id = 'yy'>
+<div id="yy" class="yy" onclick="function aa() {}">
+    <button onclick="ydalis ()" style="height: 25px; width: 25px; position: fixed; right: 304px">X</button>
     <input id="p1" style="margin-top: 35%; margin-left: 13%" >
     <button onclick="remove2 ()" style="margin-left: calc(32% + 3px)" >Удалить</button>
 
 </div>
 </body>
-
-
-
-
-
-
-
-
-
-
 <script>
-    i = false;
-    a = ['cat', 'cow', 'dog'];
+    i = true;
+    if(localStorage['list']===undefined){
+        localStorage['list'] =JSON.stringify([])
+    }
+    a = JSON.parse(localStorage['list']);
     for (i=0; i<a.length;i++) {
         x = document.createElement('div');
         x.innerHTML='<div>'+a[i]+'</div>';
         document.getElementById('1').appendChild(x);
-
     }
     function search1(a1) {
         document.getElementById('1').innerHTML = '';
@@ -126,18 +113,17 @@
          else  {
             document.getElementById('zz').style.display = 'none';
             document.getElementById('yy').style.display = 'none';
-
         }
     }
     function add2() {
        a.push(document.getElementById('p').value);
+       localStorage['list'] = JSON.stringify(a)
         add1();
         document.getElementById('1').innerHTML = '';
         for (i=0; i<a.length;i++) {
         x = document.createElement('div');
         x.innerHTML='<div>'+a[i]+'</div>';
         document.getElementById('1').appendChild(x);
-
     }
     }
 function remove1 () {
@@ -148,14 +134,31 @@ function remove1 () {
          else  {
             document.getElementById('yy').style.display = 'none';
             document.getElementById('zz').style.display = 'none';
-
         }
 }
-function remove2() {
-a.splice(4, 1);
+function remove2 () {
+    d = document.getElementById('p1').value;
+    console.log(a.indexOf(d));
+    a.splice(a.indexOf(d), 1);
+     localStorage['list'] = JSON.stringify(a)
+
+    remove1();
+    console.log(a);
+    document.getElementById('1').innerHTML = '';
+    for (i=0; i<a.length;i++) {
+    x = document.createElement('div');
+    x.innerHTML='<div>'+a[i]+'</div>';
+    document.getElementById('1').appendChild(x);
+    }
 
 }
-// удаление через slice и позицию элемента
-//
-//
-//
+function ydalis() {
+    document.getElementById('yy').style.display = 'none';
+
+}
+function ydalis1() {
+    document.getElementById('zz').style.display = 'none';
+
+}
+</script>
+</html>
